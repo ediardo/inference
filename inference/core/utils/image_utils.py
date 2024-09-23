@@ -187,6 +187,7 @@ def load_image_with_inferred_type(
     Raises:
         NotImplementedError: If the image type could not be inferred.
     """
+    print("load_image_with_inferred_type")
     if isinstance(value, (np.ndarray, np.generic)):
         validate_numpy_image(data=value)
         return value, True
@@ -256,6 +257,7 @@ def load_image_base64(
     Returns:
         np.ndarray: The loaded image as a numpy array.
     """
+    print("load_image_base64")
     # New routes accept images via json body (str), legacy routes accept bytes which need to be decoded as strings
     if not isinstance(value, str):
         value = value.decode("utf-8")
@@ -273,7 +275,7 @@ def load_image_base64(
             public_message="Empty image payload.",
         )
     image_np = np.frombuffer(value, np.uint8)
-    result = cv2.imdecode(image_np, cv_imread_flags)
+    result = cv2.imdecode(image_np, cv2.IMREAD_UNCHANGED)
     if result is None:
         raise InputImageLoadError(
             message="Could not load valid image from base64 string.",

@@ -1007,6 +1007,7 @@ class HttpInterface(BaseInterface):
                 background_tasks: BackgroundTasks,
             ) -> WorkflowInferenceResponse:
                 # TODO: get rid of async: https://github.com/roboflow/inference/issues/569
+                print("Infer from workflow")
                 return process_workflow_inference_request(
                     workflow_request=workflow_request,
                     workflow_specification=workflow_request.specification,

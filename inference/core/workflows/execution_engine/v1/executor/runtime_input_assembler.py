@@ -72,6 +72,7 @@ def assemble_input_image(
     input_batch_size: int,
     prevent_local_images_loading: bool = False,
 ) -> List[WorkflowImageData]:
+    print("assemble_input_image")
     if image is None:
         raise RuntimeInputError(
             public_message=f"Detected runtime parameter `{parameter}` defined as "
@@ -111,6 +112,7 @@ def _assemble_input_image(
     identifier: Optional[int] = None,
     prevent_local_images_loading: bool = False,
 ) -> WorkflowImageData:
+    print("_assemble_input_image")
     parent_id = parameter
     if identifier is not None:
         parent_id = f"{parent_id}.[{identifier}]"
@@ -139,7 +141,7 @@ def _assemble_input_image(
                 image = cv2.imread(image)
             else:
                 base64_image = image
-                image = attempt_loading_image_from_string(image)[0]
+                image = attempt_loading_image_from_string(image, cv2.IMREAD_UNCHANGED)[0]
             parent_metadata = ImageParentMetadata(parent_id=parent_id)
             return WorkflowImageData(
                 parent_metadata=parent_metadata,

@@ -175,6 +175,7 @@ async def load_image_from_string_async(
     max_height: Optional[int] = None,
     max_width: Optional[int] = None,
 ) -> Tuple[str, Optional[float]]:
+    print("Here...")
     if uri_is_http_link(uri=reference):
         return await load_image_from_url_async(
             url=reference, max_height=max_height, max_width=max_width

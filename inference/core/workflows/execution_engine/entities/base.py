@@ -240,6 +240,7 @@ class WorkflowImageData:
         if self._numpy_image is not None:
             return self._numpy_image
         if self._base64_image:
+            print("here.....")
             self._numpy_image = attempt_loading_image_from_string(self._base64_image)[0]
             return self._numpy_image
         if self._image_reference.startswith(

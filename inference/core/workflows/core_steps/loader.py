@@ -173,6 +173,9 @@ from inference.core.workflows.core_steps.visualizations.polygon.v1 import (
 from inference.core.workflows.core_steps.visualizations.triangle.v1 import (
     TriangleVisualizationBlockV1,
 )
+from inference.core.workflows.core_steps.visualizations.overlay.v1 import (
+    OverlayImageBlockV1,
+)
 from inference.core.workflows.execution_engine.entities.types import (
     BATCH_OF_BAR_CODE_DETECTION_KIND,
     BATCH_OF_BOOLEAN_KIND,
@@ -283,6 +286,7 @@ def load_blocks() -> List[Type[WorkflowBlock]]:
         ConvertGrayscaleBlockV1,
         ImageThresholdBlockV1,
         ImageContoursDetectionBlockV1,
+        OverlayImageBlockV1
     ]
 
 
